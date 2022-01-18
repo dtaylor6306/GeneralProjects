@@ -1,0 +1,23 @@
+	.data
+	
+x:	.quad 2				
+
+
+	.text
+	.globl	main
+
+Top:
+	cmp $10,x(%rip)
+	je outZ
+	mov $97,%rcx
+	call putchar
+	
+outZ:
+	mov $122,%rcx
+	call putchar
+done:
+	mov $0, %eax
+	ret
+	
+main:
+	ret

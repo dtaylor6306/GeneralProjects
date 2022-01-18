@@ -1,0 +1,1 @@
+console.log(parseFloat('42 what ever'))

@@ -1,0 +1,43 @@
+	.data
+	
+y:	.quad 
+m:	.quad 
+x: .quad 
+b:	.quad 		
+
+
+	.text
+	.globl	main
+
+Top:
+	xor %rax,%rax
+	mov m(%rip),%rax
+	
+	xor %rbx, %rbx
+	mov b(%rip),%rbx
+	
+	xor %rdi,%rdi
+	mov x(%rip),%rdi
+	
+	xor %rdx, %rdx
+	mov y,%rdx
+Test:
+	push %rbx
+	
+	mul %rdi	// m * x
+	
+	
+	pop %rbx
+	
+	cmp %rbx,%rdi
+	je done
+	
+	jmp Test
+	
+done:
+	mov $0, %eax
+	ret
+	
+main:
+	call Top
+	ret

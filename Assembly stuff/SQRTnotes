@@ -1,0 +1,52 @@
+	.data
+	
+i:	.quad 0
+n:	.quad 0
+N:	.quad 1234
+
+	.text
+	.globl main
+
+sqrt:
+	/* Take the sqrt of the number in the rdi */
+
+OutputDylan:
+	/* The count is in the %rdi register */
+	mov %rdi,n(%rip)
+	xor %rax,%rax
+	mov %rax,i(%rip) /* i = 0 */
+top:
+	cmp %rax,n(%rip)
+	je bottom
+	
+	mov $'D',%edi
+	call putchar
+	
+	mov $'Y',%edi
+	call putchar
+	
+	mov $'L',%edi
+	call putchar
+	
+	mov $'A',%edi
+	call putchar
+	
+	mov $'N',%edi
+	call putchar
+	
+	incq i(%rip)
+	mov i(%rip),%rax
+	jmp top
+	
+bottom:
+	ret
+
+main:
+	mov $3,%rdi
+	call OutputDylan
+	
+	
+	xor %eax,%eax
+	
+	ret
+	
