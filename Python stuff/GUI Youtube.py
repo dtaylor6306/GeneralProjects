@@ -21,10 +21,12 @@ root.columnconfigure(0, weight=1)
 root.columnconfigure(1, weight=1)
 root.columnconfigure(2, weight=1)
 
-
+def remove(widget1):
+    widget1.grid_remove()
 
 #on click function for link submission
 def linkClicked():
+    
     #on click function for download
     def downloadClicked():
         itag = itagEntry.get()
@@ -32,26 +34,22 @@ def linkClicked():
         ys.download()
         itagEntry.delete(0,'end')
         
-        def remove(widget1, widget2,widget3,widget4,widget5):
-                widget1.grid_remove()
-                widget2.grid_remove()
-                widget3.grid_remove()
-                widget4.grid_remove()
-                widget5.grid_remove()
-        
         showinfo("Finished!","File Downloaded!")
         
-        remove(itagEntry,title,itagLabel,streamInfo,downloadButton)
+        remove(itagEntry)
+        remove(title)
+        remove(itagLabel)
+        remove(streamInfo)
+        remove(downloadButton)
 
 
-  
-    
-    
+    #===================== Get info from default display to render the rest
     link= linkEntry.get()
     yt = YouTube(link)
-    
+    #clears entry
     linkEntry.delete(0,'end')
     
+    #===================== Displays video info with audio itags
     title= tk.Label(root,text= yt.title,borderwidth= 10 ,font=("Helvetica", 10))
     title.grid(row=3,column=0)
     
@@ -59,6 +57,7 @@ def linkClicked():
     streamInfo = tk.Label(root,text=streams,wraplength=250,font=("Helvetica", 10))
     streamInfo.grid(row=4,column=0)
 
+    #===================== Displays itag entry box along with download button
     itagLabel= tk.Label(root,text="Choose an itag to download.",font=("Helvetica", 10))
     itagLabel.grid(row=5,column=0)
     itagEntry = tk.Entry(root,width=50)
@@ -69,12 +68,7 @@ def linkClicked():
 
 
 
-
-
-
-
-
-#text entry box
+#===================== Default display
 linkText = tk.Label(root,text="Youtube Link: ",font=("Helvetica", 10))
 linkText.grid(row=0,column=0)
 linkEntry = tk.Entry(root,width=50)
