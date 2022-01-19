@@ -1,4 +1,5 @@
 #Created for learning purposes only
+#===================== are different sections that will be displayed at different times.
 
 from cProfile import label
 from cgitb import text
