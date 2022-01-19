@@ -6,7 +6,7 @@ from os import link
 from sqlite3 import Row
 import tkinter as tk
 from tkinter import Entry, Frame, font
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import showerror, showinfo
 from pytube import YouTube
 
 
@@ -30,22 +30,31 @@ def linkClicked():
     #on click function for download
     def downloadClicked():
         itag = itagEntry.get()
-        ys = yt.streams.get_by_itag(itag)
-        ys.download()
-        itagEntry.delete(0,'end')
+        try:
+            ys = yt.streams.get_by_itag(itag)
+        except:
+            showerror("Itag","Cannot find itag #:\n"+itag)
+        try:
+            ys.download()
+            itagEntry.delete(0,'end')
+            remove(itagEntry)
+            remove(title)
+            remove(itagLabel)
+            remove(streamInfo)
+            remove(downloadButton)
+        except:
+            showerror("Download","Cannot download video") 
+        else:
+            showinfo("Finished!","File Downloaded!")
         
-        showinfo("Finished!","File Downloaded!")
-        
-        remove(itagEntry)
-        remove(title)
-        remove(itagLabel)
-        remove(streamInfo)
-        remove(downloadButton)
 
 
     #===================== Get info from default display to render the rest
     link= linkEntry.get()
-    yt = YouTube(link)
+    try:
+        yt = YouTube(link)
+    except:
+        showerror("Invalid","Cannot find video:\n"+link)
     #clears entry
     linkEntry.delete(0,'end')
     
