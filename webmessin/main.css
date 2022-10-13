@@ -1,0 +1,11 @@
+.inside-div{
+    width: 50%;
+    padding: 5%;
+    margin: auto;
+    background-color: gray;
+    text-align: center;
+    border-style: solid;
+}
+body{
+    background-color: darkgrey;
+}
