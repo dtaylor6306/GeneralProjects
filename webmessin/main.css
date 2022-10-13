@@ -6,6 +6,56 @@
     text-align: center;
     border-style: solid;
 }
-body{
-    background-color: darkgrey;
+.inside-p{
+    font-size: 20px;
 }
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    background-color: darkgray;
+  }
+.container{
+    height: 25%;
+    padding: 5%;
+}
+.no-div{
+    height:75%;
+    margin: 0%;
+}
+
+.no{
+    animation: around 3s 1s ease-in forwards infinite alternate;
+    width: 50%;
+    height: 50%;
+    border-style: solid;
+    background-color: red;
+}
+h1{
+    text-align: center;
+    height: 50%;
+    font-size: 100px;
+}
+
+
+@keyframes around {
+    0%{
+        transform: translateX(0%);
+    }
+
+    33%{
+        transform: translateX(100%);
+    }
+
+    66%{
+        transform: translateY(100%) translateX(100%);
+    }
+
+    100%{
+        transform: translateY(100%) translateX(0%);
+    }
+
+    
+}
+

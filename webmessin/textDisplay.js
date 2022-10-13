@@ -8,7 +8,7 @@ function display(message){
         if (count > message.length - 1){
             clearInterval(interval);
         }
-    }, 50);
+    }, 75);
 }
 
 var text = "Has Anyone Really Been Far Even as Decided to Use Even Go Want to do Look More Like?";
